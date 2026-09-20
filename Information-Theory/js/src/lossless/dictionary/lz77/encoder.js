@@ -35,8 +35,9 @@ export class Encoder {
         inputLength - position,
       );
 
-      // Try every possible distance, farthest first.
-      for (let distance = maxSearchLength; distance >= 1; distance--) {
+      // Try every possible distance, nearest first; ties prefer the closest match
+      // (smallest distance), so a run like "BBBBB..." matches at distance 1, not 2.
+      for (let distance = 1; distance <= maxSearchLength; distance++) {
         let length = 0;
 
         // Repetitive-data handling: count how many characters agree when
@@ -57,6 +58,7 @@ export class Encoder {
         }
 
         // Keep the longest match found so far (and the distance it used).
+        // Scanning near→far means equal-length matches keep the closest distance.
         if (length > token.length) {
           token.distance = distance;
           token.length = length;
