@@ -17,3 +17,6 @@ bin/
 
 # Rust build artifacts
 target/
+
+# JavaScript / Node modules
+node_modules/
