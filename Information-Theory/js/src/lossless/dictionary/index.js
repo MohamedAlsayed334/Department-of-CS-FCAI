@@ -7,8 +7,8 @@
  *
  *     import { Encoder, Decoder, Token } from ".../dictionary/index.js";
  */
-export { Token } from "./token.js";
-export { Encoder } from "./encoder.js";
-export { Decoder } from "./decoder.js";
-export { compress, decompress } from "./lz77.js";
-export { printBenchmark } from "./benchmark.js";
+export { Token } from "./lz77/token.js";
+export { Encoder } from "./lz77/encoder.js";
+export { Decoder } from "./lz77/decoder.js";
+export { compress, decompress } from "./lz77/lz77.js";
+export { printBenchmark } from "./lz77/benchmark.js";

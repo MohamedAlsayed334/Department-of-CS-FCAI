@@ -39,8 +39,16 @@ export class Encoder {
       for (let distance = maxSearchLength; distance >= 1; distance--) {
         let length = 0;
 
-        // Count how many characters agree when comparing the text starting at
-        // 'position' with the text 'distance' characters earlier.
+        // Repetitive-data handling: count how many characters agree when
+        // comparing the text starting at 'position' with the text 'distance'
+        // characters earlier.
+        //
+        // The trick is the comparison index `position + length - distance`.
+        // While `length < distance` it reads previously seen input. But once
+        // `length` grows PAST `distance`, that index re-reads characters that
+        // are part of this very match's output — the repetition "feeds itself".
+        // That is how a short tile like "ab" encodes the run "ababababa" as ONE
+        // long match instead of many short ones.
         while (
           length < maxLookaheadLength &&
           input[position + length] == input[position + length - distance]

@@ -16,11 +16,12 @@ js/
 │       ├── index.js            ← lossless entry point
 │       └── dictionary/
 │           ├── index.js        ← dictionary module entry point
-│           ├── lz77.js         ← high-level compress / decompress wrapper
-│           ├── token.js        ← LZ77 tuple / token type
-│           ├── encoder.js      ← LZ77 encoder
-│           ├── decoder.js      ← LZ77 decoder
-│           └── benchmark.js    ← size-statistics printer
+│           └── lz77/
+│               ├── lz77.js     ← high-level compress / decompress wrapper
+│               ├── token.js    ← LZ77 tuple / token type
+│               ├── encoder.js  ← LZ77 encoder
+│               ├── decoder.js  ← LZ77 decoder
+│               └── benchmark.js ← size-statistics printer
 └── test/
     └── lz77.test.js            ← unit tests
 ```
